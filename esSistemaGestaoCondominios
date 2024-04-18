@@ -1,0 +1,120 @@
+	public static void main(String[] args) {
+
+		Scanner input = new Scanner(System.in);
+		
+		int opcao=0;
+		int acesso=0;
+		opcao= menuLoggin(input);
+		acesso=loggInComo(input, opcao);
+		paginaPrincipal(input, acesso);
+		
+	}
+
+	private static int menuLoggin(Scanner input) {
+
+		System.out.print("\n\tSISTEMA DE GESTAO DE CONDOMINIOS\n Entrar como: \t1-Admin\t\t2-Gestor\t3-Utilizador\t4-Fechar Programa\n?-> ");
+		int opcao=input.nextInt();
+		return opcao;
+	}
+
+	private static int loggInComo(Scanner input, int opcao) {
+		
+		boolean acesso= false;
+		int premissao=0;
+		if(opcao==1) {
+			System.out.print("\n\tLoggIn de Administrador");
+			acesso=sistemaLoggin(input, opcao);
+			if(acesso==true)
+				premissao=1;
+		
+		}
+		if(opcao==2) {
+			System.out.print("\n\tLoggIn de Gestor");
+			acesso=sistemaLoggin(input, opcao);
+			if(acesso==true)
+				premissao=2;
+			
+		}
+		if(opcao==3) {
+			System.out.print("\n\tLoggIn de Utilizador");
+			acesso=sistemaLoggin(input, opcao);
+			if(acesso==true)
+				premissao=3;
+			
+		}
+		if(opcao==4) {
+			System.out.print("\n\tFechar Programa");
+			return 0;
+		}
+		return premissao;
+	}
+	
+	private static boolean sistemaLoggin(Scanner input, int opcao) {
+		boolean loginValidado=false;
+		String eAdmin="afonsoEmail.com";
+		String pAdmin="1234";
+		
+		int validado=0;
+		while(validado<2) {
+			validado=0;
+
+			System.out.print("\nE-mail: \t");
+			String eLogin = input.next();
+			System.out.print("Password: \t");
+			String pLogin = input.next();
+
+			if(eLogin.equals(eAdmin)) { 
+				System.out.println("\nEmail Valido!"+ eLogin+".");
+				validado+=1;
+			}else
+				System.out.println("\nEmail invalido!"+ eLogin+".");
+
+			if(pLogin.equals(pAdmin)) {
+				System.out.println("\nPassword Valida!"+ pLogin+".\n");
+				validado+=1;
+			}else
+				System.out.println("\nPassword Invalida!"+ pLogin+".");
+			System.out.println(validado);
+		}///// fim do while
+		
+		if(validado==2)
+			loginValidado=true;
+		return loginValidado;
+	}
+
+
+	private static void paginaPrincipal(Scanner input, int cargo) {
+
+		System.out.print("\n\tPAGINA PRINCIPAL\n1-Ver Condominios\n2-coisa\n3-opcao\n?->");
+		int faz;
+
+		if(cargo==1) {
+			System.out.print("\n\tOPCOES DE ADMIN NA PAGINA PRINCIPAL\n1-Criar Utilizadores\n2-Entregar Autorizacoes\n3-Sair\n?->");
+			
+		}
+
+		if(cargo==2) {
+			System.out.println("\n\tOPCOES DE GESTOR NA PAGINA PRINCIPAL\n1-Criar Condominio\n2-Gerir Pagamento dum Condominio\n3-Registar Pedidos de Condominio"
+					+ "\n4-Realizar Registos associados\n5-Registar Faturas\n6-Criar Quatacoes");
+		}
+
+		if(cargo==3) {
+			System.out.println("\n\tOPCOES DE UTILIZADOR NA PAGINA PRINCIPAL\n");
+			
+		}
+
+		faz=input.nextInt();
+
+		System.out.print("\nOpcao:\t"+ faz +"vai fazer alguma coisa");
+		
+		if(faz==1) {
+			verCondos(input);
+		}
+
+
+	}
+	
+	private static void verCondos(Scanner input) {
+		int nrCondo;
+		
+	}
